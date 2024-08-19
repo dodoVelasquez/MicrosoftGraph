@@ -14,7 +14,7 @@ try
 
     var httpClient = new HttpClient();
 
-    /* Agregar el token de acceso a la solicitud */
+    /* Agregar token de acceso a la solicitud */
     httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token.access_token);
     /* preferencia de respuesta en JSON */
     httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
@@ -23,7 +23,7 @@ try
     var responseGet = await httpClient.GetAsync(
         "https://graph.microsoft.com/v1.0/users?$select=Id,displayName,givenname,surname,employeeId,mail,jobTitle,officeLocation,department");
 
-    /* Verificar si la solicitud fue exitosa */
+    /* Verificar solicitud exitosa */
     if (responseGet.IsSuccessStatusCode)
     {
         var responseBody = await responseGet.Content.ReadAsStringAsync();
@@ -91,7 +91,7 @@ async Task<TokenResponse> GetTokenAsync()
 
 public class TokenResponse
 {
-    /* clase para obtener info token */
+    /* clase info token */
     public string access_token { get; set; }
     public string token_type { get; set; }
     public int expires_in { get; set; }
